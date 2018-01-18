@@ -1,18 +1,18 @@
 package main
 
-// 区块链
+// Blockchain keeps a sequence of Blocks
 type Blockchain struct {
 	blocks []*Block
 }
 
-// 在区块链中添加区块
+// AddBlock saves provided data as a block in the blockchain
 func (bc *Blockchain) AddBlock(data string) {
 	prevBlock := bc.blocks[len(bc.blocks)-1]
 	newBlock := NewBlock(data, prevBlock.Hash)
 	bc.blocks = append(bc.blocks, newBlock)
 }
 
-// 一个新的区块链
+// NewBlockchain creates a new Blockchain with genesis Block
 func NewBlockchain() *Blockchain {
 	return &Blockchain{[]*Block{NewGenesisBlock()}}
 }
